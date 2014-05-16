@@ -1,0 +1,28 @@
+//SIGHT System - Summary Generation
+//Chrome Extension v1.0
+//By Gabriel Sina - Last update May 16, 2014
+/////////////////////////////////////////////
+{
+	"manifest_version": 2,
+
+	"name": "SIGHT - Summary Generation",
+  	"description": "SIGHT SYSTEM - Summary Generation",
+	"version": "1.0",
+	"background" : "background.html",
+	"page_action" :
+	{
+		"default_icon" : "icon.png",
+		"default_title" : "SIGHT SYSTEM - Summary Generation"
+	},
+
+	"content_scripts" : [
+		{
+			"matches" : [
+				"http://*/*"
+				//"https://*/*"
+			],
+			"run_at" : "document_idle",
+			"js" : ["jquery-1.11.1.min.js","contentscript2.js"]
+		}
+	]
+}
