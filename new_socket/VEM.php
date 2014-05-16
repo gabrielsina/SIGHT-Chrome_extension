@@ -80,7 +80,7 @@ class VEM{
 	}
 
 	//Reads Most Relevant Paragraph .txt file
-	private function readVEMOutput(){
+	private function readMRPOutput(){
 		//gets content of the MRP final output (.txt file)
 		$mrp_content = file_get_contents($MOST_RELEVANT_PATH, true);
 		$this->mrp = $mrp_content;
