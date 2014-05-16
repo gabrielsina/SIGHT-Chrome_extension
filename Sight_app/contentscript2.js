@@ -65,17 +65,17 @@ var page_content = [];
 
 $("h1").each(function(){
 	var text = $(this).text();
-	if(text!="") page_content.push(text);
+	if(text!=""){ page_content.push(text); }
 });
 
 $("h2").each(function(){
 	var text = $(this).text();
-	if(text!="") page_content.push(text);
+	if(text!=""){ page_content.push(text); }
 });
 
 $("p").each(function(){
 	var text = $(this).text();
-	if(text!="") page_content.push(text);
+	if(text!=""){ page_content.push(text); }
 });
 
 //Brute forcing both arrays to be one single string
