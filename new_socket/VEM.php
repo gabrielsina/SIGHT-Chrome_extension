@@ -8,12 +8,12 @@ class VEM{
 
 	//////////CONFIGURATION SECTION////////////////
 	private $IMAGE_DIRECTORY = 'C:\Users\SIGHT\Desktop\DemoLineGraph\Input_images'; //directory to save the INPUT image
-	private $TEXT_DIRECTORY = 'C:\Users\SIGHT\Documents\LineGraph\ArticlesText'; //directory to save the INPUT text file
-	private $PEARL_SCRIPT_NAME = 'LinkAll.pl'; //pearl script name
+	private $TEXT_DIRECTORY = 'C:\\Users\\SIGHT\\Documents\\LineGraph\\ArticlesText'; //directory to save the INPUT text file
+	private $PEARL_SCRIPT_NAME = 'LinkAllChromeExtension.pl'; //pearl script name
 	private $PEARL_SCRIPT_PATH = 'C:\Users\SIGHT\Documents\LineGraph\LinkAll'; //path of the pearl file
 	private $PEARL_TXT_OUTPUT_PATH = 'C:\cygwin\home\SIGHT\irnet\FUFSURGE'; //path to the generated summary .txt file
 	private $PEARL_LAST_LINE_STANDARD = 'Finished generating.'; //standard successful last line message from the pearl script
-	
+
 	//most relevant paragraph output path
 	//so far, the output file will always be overwritten, once it is fixed in the Perl script, it should be changed here
 	private $MOST_RELEVANT_PATH = 'C:\Users\SIGHT\Documents\LineGraph\output\MRPresult.txt';
@@ -22,7 +22,7 @@ class VEM{
 	private $image_url; //image url
 	private $text_body; //string text body
 
-	private $text_n_image_id; // id for this tuple VEM<image,text>
+	public $text_n_image_id; // id for this tuple VEM<image,text>
 
 	public $output; // summary output text
 	public $mrp_content; // number of the most relevant paragraph
@@ -31,14 +31,15 @@ class VEM{
 		$this->image_url = $image_url;
 		$this->text_body = $text_body;
 		//$this->text_n_image_id = uniqid(rand());
-		$this->text_n_image_id = $id;
+		$this->text_n_image_id = isset($_POST[$id]);
+		//$this->TEXT_DIRECTORY = 'C:\\Users\\SIGHT\\Documents\\LineGraph\\ArticlesText';
 	}
 
 	private function saveText(){
 		$current_path = getcwd(); //stores current php's working_directory
 		//echo ($current_path);
-		if(chdir($TEXT_DIRECTORY)) //changes working_directory to text output directory
-		{	
+		if(chdir('C:\\Users\\SIGHT\\Documents\\LineGraph\\ArticlesText')) //changes working_directory to text output directory
+		{
 			$fp = fopen("articleText".$text_n_image_id.".txt", "wb");//creates a new ID.txt file, wb permission
 			if ($fp == true){ // tests if the file was created
 				fwrite($fp, $text_body); //writes the input text string to the above file
@@ -57,7 +58,7 @@ class VEM{
 		//stores current php's working_directory
 		$current_path = getcwd();
 		if(chdir($IMAGE_DIRECTORY)) //changes working_directory to image output directory
-		{	
+		{
 			//creates a new ID.gif file, wb permission
 			$fp = fopen($text_n_image_id.".gif", "wb");
 			if ($fp == true){ // tests if the image file was created
