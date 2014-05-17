@@ -31,7 +31,8 @@ class VEM{
 		$this->image_url = $image_url;
 		$this->text_body = $text_body;
 		//$this->text_n_image_id = uniqid(rand());
-		$this->text_n_image_id = isset($_POST[$id]);
+		$this->text_n_image_id = $id;
+		echo ("hey: ".$this->text_n_image_id);
 		//$this->TEXT_DIRECTORY = 'C:\\Users\\SIGHT\\Documents\\LineGraph\\ArticlesText';
 	}
 
